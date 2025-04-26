@@ -1,11 +1,11 @@
-package com.challenge.app.services;
+package com.challenge.application.services;
 
-import com.challenge.app.dtos.response.RateDto;
-import com.challenge.app.interfaces.IDynamicRateServices;
+import com.challenge.web.dtos.response.RateDto;
+import com.challenge.application.interfaces.IDynamicRateServices;
+import com.challenge.application.interfaces.IHistoryCallServices;
 import com.challenge.commons.exceptions.ProviderException;
 import com.challenge.domain.models.HistoryLog;
 import com.challenge.domain.repositories.DynamicRateRepository;
-import com.challenge.domain.repositories.HistoryLogRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class DynamicRateService implements IDynamicRateServices {
 
     private final DynamicRateRepository dynamicRateRepository;
-    private final HistoryLogRepository historyLogRepository;
+    private final IHistoryCallServices historyCall;
 
     @Override
     public RateDto getDynamicRate(Double num1, Double num2) throws ProviderException {
@@ -22,11 +22,11 @@ public class DynamicRateService implements IDynamicRateServices {
         Double percentage = dynamicRateRepository.getPercentage();
         double rate = sum + ( sum * (percentage / 100));
 
-//        HistoryLog historyLog = new HistoryLog();
-//        historyLog.setParameters(num1 + " + " + num2);
-//        historyLog.setResult(sum);
-//        historyLog.setEndpoint("DynamicRateService");
-//        historyLogRepository.save(historyLog);
+        HistoryLog historyLog = new HistoryLog();
+        historyLog.setParameters(num1 + " + " + num2);
+        historyLog.setResult(sum);
+        historyLog.setEndpoint("DynamicRateService");
+        historyCall.saveHistoryLog(historyLog);
 
         System.out.println("Sum: " + rate);
         return RateDto.builder()

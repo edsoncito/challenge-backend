@@ -1,6 +1,6 @@
-package com.challenge.app.interfaces;
+package com.challenge.application.interfaces;
 
-import com.challenge.app.dtos.response.RateDto;
+import com.challenge.web.dtos.response.RateDto;
 import com.challenge.commons.exceptions.ProviderException;
 
 public interface IDynamicRateServices {

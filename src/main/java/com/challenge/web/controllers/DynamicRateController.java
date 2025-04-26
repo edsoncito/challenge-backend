@@ -1,7 +1,8 @@
-package com.challenge.app.controllers;
+package com.challenge.web.controllers;
 
-import com.challenge.app.dtos.response.RateDto;
-import com.challenge.app.interfaces.IDynamicRateServices;
+import com.challenge.web.dtos.ApiDataResponse;
+import com.challenge.web.dtos.response.RateDto;
+import com.challenge.application.interfaces.IDynamicRateServices;
 import com.challenge.commons.exceptions.ErrorDetail;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,7 +11,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/api")
 @Tag(name = "Dynamic rate", description = "Calcutation of dynamic rate")
-@Validated
 public class DynamicRateController {
 
     private final IDynamicRateServices iDynamicRateServices;

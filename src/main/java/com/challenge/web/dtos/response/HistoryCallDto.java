@@ -1,18 +1,16 @@
-package com.challenge.domain.models;
+package com.challenge.web.dtos.response;
 
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HistoryLog {
+public class HistoryCallDto {
 
     private Long id;
-    private LocalDateTime timestamp;
+    private String timestamp;
     private String endpoint;
     private String parameters;
     private Double result;

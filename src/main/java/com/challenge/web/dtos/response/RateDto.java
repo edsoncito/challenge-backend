@@ -1,4 +1,4 @@
-package com.challenge.app.dtos.response;
+package com.challenge.web.dtos.response;
 
 import lombok.*;
 

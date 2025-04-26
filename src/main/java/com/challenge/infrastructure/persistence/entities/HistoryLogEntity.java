@@ -1,4 +1,4 @@
-package com.challenge.infrastructure.persistence.entity;
+package com.challenge.infrastructure.persistence.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,5 +38,4 @@ public class HistoryLogEntity {
             this.timestamp = LocalDateTime.now();
         }
     }
-
 }
