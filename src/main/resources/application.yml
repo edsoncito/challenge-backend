@@ -1,0 +1,30 @@
+project:
+  version: @project.version@
+
+server:
+  servlet:
+    context-path: '/challenge'
+  port: 8051
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  management:
+    endpoint:
+      metrics:
+        enabled: true
+      health:
+        show-details: always
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+  cloud:
+    config:
+      enabled: false
+
+  data:
+    redis:
+      host: localhost
+      port: 6479
