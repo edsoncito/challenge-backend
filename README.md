@@ -38,7 +38,7 @@ El proyecto sigue principios de **Clean Architecture**, organizando la solución
    docker-compose up -d
    ```
    
-3.corre el proyecto
+3. corre el proyecto
    ```bash
    mvn spring-boot:run
    ```
@@ -62,6 +62,6 @@ El proyecto sigue principios de **Clean Architecture**, organizando la solución
  - para que llamada al servicio reciba null como respuesta
    return null;
 
- para que la llamada sea una exception simulando que el servicio esta abajo o fallo 
+ - para que la llamada sea una exception simulando que el servicio esta abajo o fallo 
     throw new Exception("Error Server");
    

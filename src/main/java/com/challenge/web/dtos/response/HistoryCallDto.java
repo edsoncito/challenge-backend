@@ -13,6 +13,6 @@ public class HistoryCallDto {
     private String timestamp;
     private String endpoint;
     private String parameters;
-    private Double result;
+    private String result;
 
 }

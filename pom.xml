@@ -118,18 +118,9 @@
                         <exclude>bo/com/bg/**/Application.class</exclude>
                         <exclude>bo/com/bg/**/AbstractController.class</exclude>
                         <exclude>bo/com/bg/**/exceptions/**/*</exclude>
-                        <exclude>bo/com/bg/**/config/*</exclude>
-                        <exclude>bo/com/bg/**/handler/*</exclude>
-                        <exclude>bo/com/bg/**/app/config/**/*</exclude>
                         <exclude>bo/com/bg/properties/**/*</exclude>
-                        <exclude>bo/com/bg/**/specification/*</exclude>
                         <exclude>bo/com/bg/**/domain/model/*_.class</exclude>
                         <exclude>bo/com/bg/**/commons/**</exclude>
-                        <exclude>bo/com/bg/**/rest/request/*</exclude>
-                        <exclude>bo/com/bg/**/rest/response/*</exclude>
-                        <exclude>bo/com/bg/**/domain/connector/response/*</exclude>
-                        <exclude>bo/com/bg/**/provider/request/*</exclude>
-                        <exclude>bo/com/bg/**/provider/response/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

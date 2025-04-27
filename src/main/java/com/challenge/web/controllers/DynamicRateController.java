@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +36,9 @@ public class DynamicRateController {
             @ApiResponse(responseCode = "406", description = "Not Acceptable", content = @Content(schema = @Schema(implementation = ErrorDetail.class))),
             @ApiResponse(responseCode = "500", description = "Internal error.", content = @Content(schema = @Schema(implementation = ErrorDetail.class)))})
     @PostMapping(path = "/dynamic-rate")
-    public ResponseEntity<ApiDataResponse<RateDto>> dynamicRate(Double num1, Double num2) {
-        RateDto res = iDynamicRateServices.getDynamicRate(num1, num2);
+    public ResponseEntity<ApiDataResponse<RateDto>> dynamicRate(Double num1, Double num2, HttpServletRequest request) {
+        String requestUrl = request.getRequestURL().toString();
+        RateDto res = iDynamicRateServices.getDynamicRate(num1, num2, requestUrl);
         return ResponseEntity.ok(ApiDataResponse.<RateDto>builder().data(res).build());
     }
 

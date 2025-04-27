@@ -34,8 +34,6 @@ public class DynamicRateProvider implements DynamicRateRepository {
                 return Double.parseDouble(cachedValue);
             }
             throw new ProviderException("El porcentaje es nulo y no hay valor en caché.", "No se pudo obtener el porcentaje.", "ERR-001", HttpStatus.BAD_REQUEST);
-        } catch (ProviderException e) {
-            throw e;
         } catch (Exception e) {
             if (cachedValue != null) {
                 return Double.parseDouble(cachedValue);

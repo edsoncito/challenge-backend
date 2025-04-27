@@ -5,6 +5,6 @@ import com.challenge.commons.exceptions.ProviderException;
 
 public interface IDynamicRateServices {
 
-    RateDto getDynamicRate(Double num1, Double num2) throws ProviderException;
+    RateDto getDynamicRate(Double num1, Double num2, String requestUrl) throws ProviderException;
 
 }

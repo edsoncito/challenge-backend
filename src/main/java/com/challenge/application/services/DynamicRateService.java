@@ -17,21 +17,29 @@ public class DynamicRateService implements IDynamicRateServices {
     private final IHistoryCallServices historyCall;
 
     @Override
-    public RateDto getDynamicRate(Double num1, Double num2) throws ProviderException {
-        double sum = num1 + num2;
-        Double percentage = dynamicRateRepository.getPercentage();
-        double rate = sum + ( sum * (percentage / 100));
+    public RateDto getDynamicRate(Double num1, Double num2, String requestUrl) throws ProviderException {
+        try {
+            double sum = num1 + num2;
+            Double percentage = dynamicRateRepository.getPercentage();
+            double rate = sum + (sum * (percentage / 100));
 
+            saveHistoryLog(num1, num2, String.valueOf(rate), requestUrl);
+
+            return RateDto.builder()
+                    .codeResponse("00")
+                    .messageResponse("Success")
+                    .build();
+        } catch (ProviderException e) {
+            saveHistoryLog(num1, num2, e.getMessage(), requestUrl);
+            throw e;
+        }
+    }
+
+    private void saveHistoryLog(Double num1, Double num2, String result, String requestUrl) {
         HistoryLog historyLog = new HistoryLog();
-        historyLog.setParameters(num1 + " + " + num2);
-        historyLog.setResult(sum);
-        historyLog.setEndpoint("DynamicRateService");
+        historyLog.setParameters(num1 + " , " + num2);
+        historyLog.setResult(result);
+        historyLog.setEndpoint(requestUrl);
         historyCall.saveHistoryLog(historyLog);
-
-        System.out.println("Sum: " + rate);
-        return RateDto.builder()
-                .codeResponse("00")
-                .messageResponse("Success")
-                .build();
     }
 }

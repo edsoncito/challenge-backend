@@ -30,7 +30,7 @@ public class HistoryLogEntity {
     private String parameters;
 
     @Column(columnDefinition = "TEXT")
-    private Double result;
+    private String result;
 
     @PrePersist
     public void prePersist() {
